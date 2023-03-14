@@ -9,3 +9,5 @@ const test = ref('this is a test!')
 <template>
   <PartCard>{{ test }}</PartCard>
 </template>
+
+<p>test</p>
