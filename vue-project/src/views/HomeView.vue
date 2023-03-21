@@ -1,9 +1,7 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import CartButton from '../components/CartButton.vue'
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <CartButton />
 </template>
