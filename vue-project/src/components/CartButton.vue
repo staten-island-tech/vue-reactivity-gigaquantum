@@ -1,6 +1,6 @@
 <script setup>
 const props = defineProps({
-  labelText: String
+  labelText: Number
 })
 </script>
 
@@ -12,7 +12,7 @@ const props = defineProps({
 
 <style scoped>
 button {
-  font-size: 5%;
+  font-size: 20px;
   color: blueviolet;
 }
 </style>
