@@ -3,10 +3,10 @@ import { RouterLink, RouterView } from 'vue-router'
 import { ref } from 'vue'
 import CartButton from './components/CartButton.vue'
 
-let msg = 0
+const msg = ref(1)
 function testClick() {
-  msg++
-  console.log(msg)
+  msg.value++
+  console.log(msg.value)
 }
 </script>
 

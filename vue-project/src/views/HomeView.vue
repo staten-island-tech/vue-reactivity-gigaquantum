@@ -2,6 +2,4 @@
 import CartButton from '../components/CartButton.vue'
 </script>
 
-<template>
-  <CartButton />
-</template>
+<template></template>
