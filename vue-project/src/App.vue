@@ -4,14 +4,21 @@ import { ref } from 'vue'
 import CartButton from './components/CartButton.vue'
 // import CarCard from './components/CarCard.vue'
 
-const carClassColors = ref({
-  s2: 'rgb(21, 103, 214)',
-  s1: 'rgb(189, 94, 228)',
-  a: 'rgb(252, 53, 90)',
-  b: 'rgb(255, 101, 51)',
-  c: 'rgb(246, 191, 49)',
-  d: 'rgb(61, 186, 234)'
+const carClassInfo = ref({
+  s2: {
+    name: 'S2',
+    maxRating: 998,
+    color: 'rgb(21, 103, 214)'
+  },
+  s1: {name: 'S1', maxRating: 900,
+  color: 'rgb(189, 94, 228)'},
+  a: {name: 'A',maxRating: 800,
+  color: 'rgb(252, 53, 90)'},
+  b: {name: 'B', maxRating: 700, color: 'rgb(255, 101, 51)'},
+  c: {name: 'C', maxRating: 600, color: 'rgb(246, 191, 49)'},
+  d: {name: 'D', maxRating: 500, color: 'rgb(61, 186, 234)'}
 })
+
 
 const carList = ref([
   {
