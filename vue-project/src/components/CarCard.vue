@@ -1,13 +1,28 @@
 <script setup>
-import CartButton from './components/CartButton.vue'
+import { ref } from 'vue'
+import CartButton from './CartButton.vue'
 
-props = new
+const bool = ref(false)
+const selectedMsg = ref('IN CART')
+const defaultMsg = ref('ADD TO CART')
+
+function toggleBool() {
+  bool.value = !bool.value
+}
 </script>
 
 <template>
-  <div :class="cardClass"></div>
+  <p>car</p>
+  <CartButton
+    :defaultText="defaultMsg"
+    :selectedText="selectedMsg"
+    :selectedStatus="bool"
+    @click="toggleBool()"
+  />
 </template>
 
 <style scoped>
-.btn;
+p {
+  font-size: 2rem;
+}
 </style>
