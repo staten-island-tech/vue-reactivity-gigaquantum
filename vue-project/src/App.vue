@@ -6,19 +6,29 @@ import CartButton from './components/CartButton.vue'
 
 const carClassInfo = ref({
   s2: {
-    name: 'S2',
+    className: 'S2',
     maxRating: 998,
     color: 'rgb(21, 103, 214)'
   },
-  s1: {name: 'S1', maxRating: 900,
-  color: 'rgb(189, 94, 228)'},
-  a: {name: 'A',maxRating: 800,
-  color: 'rgb(252, 53, 90)'},
-  b: {name: 'B', maxRating: 700, color: 'rgb(255, 101, 51)'},
-  c: {name: 'C', maxRating: 600, color: 'rgb(246, 191, 49)'},
-  d: {name: 'D', maxRating: 500, color: 'rgb(61, 186, 234)'}
+  s1: { className: 'S1', maxRating: 900, color: 'rgb(189, 94, 228)' },
+  a: { className: 'A', maxRating: 800, color: 'rgb(252, 53, 90)' },
+  b: { className: 'B', maxRating: 700, color: 'rgb(255, 101, 51)' },
+  c: { className: 'C', maxRating: 600, color: 'rgb(246, 191, 49)' },
+  d: { className: 'D', maxRating: 500, color: 'rgb(61, 186, 234)' }
 })
 
+function getCarClass(performanceIndex) {
+  Object.entries(carClassInfo)
+    .sort((a, b) => {
+      return a - b
+    })
+    .forEach((dataEntry) => {
+      if (dataEntry.maxRating >= performanceIndex) {
+        console.log(dataEntry)
+        return dataEntry
+      }
+    })
+}
 
 const carList = ref([
   {
@@ -130,23 +140,31 @@ const bool = ref(false)
 const selectedMsg = ref('IN CART')
 const defaultMsg = ref('ADD TO CART')
 
-function toggleBool() {
-  bool.value = !bool.value
-}
+function toggleBool() {}
 </script>
 
 <template>
-  <h1>carz</h1>
-  <img
-    src="https://www.gtplanet.net/wp-content/uploads/2021/09/fh5-carlist-porsche-taycan-20210903.jpg"
-    alt="taycan turbo s 2020"
-  />
-  <CartButton
-    :defaultText="defaultMsg"
-    :selectedText="selectedMsg"
-    :selectedStatus="bool"
-    @click="toggleBool()"
-  />
+  <div class="car-card" v-for="car in carList">
+    <img
+      :src="car.imgURL"
+      alt="Image of a {{ car.year }} {{ car.brandName }} {{ car.modelName }}"
+    />
+    <sub class="performance-index-icon">
+      <p>{{ [getCarClass(car.performanceIndex)].className }}</p>
+      <p>{{ car.performanceIndex }}</p>
+    </sub>
+    <h2>{{ car.brandName }}</h2>
+    <h2>{{ car.modelName }}</h2>
+    <h2>{{ car.year }}</h2>
+    <CartButton
+      :defaultText="defaultMsg"
+      :selectedText="selectedMsg"
+      :selectedStatus="car.inCart"
+      :buttonBackgroundColor="[getCarClass(car.performanceIndex)].color"
+      @click="car.inCart = !car.inCart"
+    />
+  </div>
+
   <!-- <CarCard /> -->
   <RouterView />
 </template>
@@ -156,7 +174,32 @@ h1 {
   font-size: 2rem;
 }
 
+h2 {
+  font-size: 3rem;
+}
+
 img {
   width: 40rem;
+}
+.car-card {
+  border-color: blueviolet;
+  border-style: solid;
+  border-width: 0.25rem;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
+
+.performance-index-icon {
+  font-size: 4rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  border-color: blueviolet;
+  border-style: solid;
+  border-width: 0.25rem;
 }
 </style>

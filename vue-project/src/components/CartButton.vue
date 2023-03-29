@@ -2,7 +2,8 @@
 const props = defineProps({
   defaultText: String,
   selectedText: String,
-  selectedStatus: Boolean
+  selectedStatus: Boolean,
+  buttonBackgroundColor: String
 })
 </script>
 
@@ -33,11 +34,11 @@ button:hover {
 }
 
 .selected-btn {
-  color: rgb(0, 0, 0);
+  color: v-bind(buttonBackgroundColor);
   background-color: rgb(255, 255, 255);
 }
 .default-btn {
   color: rgb(255, 255, 255);
-  background-color: rgba(0, 0, 0);
+  background-color: v-bind(buttonBackgroundColor);
 }
 </style>
