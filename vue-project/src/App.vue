@@ -147,6 +147,7 @@ const defaultMsg = ref('ADD TO CART')
         :src="car.imgURL"
         alt="Image of a {{ car.year }} {{ car.brandName }} {{ car.modelName }}"
       />
+      <CarImage :imageURL="car.imgURL" :imageAlt="" />
       <performanceIndexIcon />
       <sub class="performance-index-icon"> </sub>
       <h2>{{ car.brandName }}</h2>
