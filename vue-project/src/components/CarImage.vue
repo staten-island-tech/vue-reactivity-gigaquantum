@@ -1,6 +1,4 @@
 <script setup>
-import ref from 'vue'
-
 const props = defineProps({
   imageURL: String,
   imageAlt: String
@@ -8,5 +6,11 @@ const props = defineProps({
 </script>
 
 <template>
-  <img src="{{ imageURL }}" alt="{{ imageAlt }}" />
+  <img :src="imageURL" :alt="imageAlt" />
 </template>
+
+<style scoped>
+img {
+  width: 40rem;
+}
+</style>

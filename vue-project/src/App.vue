@@ -2,7 +2,8 @@
 import { RouterLink, RouterView } from 'vue-router'
 import { ref } from 'vue'
 import CartButton from './components/CartButton.vue'
-import performanceIndexIcon from './components/PerformanceIndexIcon.vue'
+import PerformanceIndexIcon from './components/PerformanceIndexIcon.vue'
+import CarImage from './components/CarImage.vue'
 
 const carClassInfo = ref({
   s2: {
@@ -143,12 +144,11 @@ const defaultMsg = ref('ADD TO CART')
 <template>
   <div id="card-bin">
     <div class="car-card" v-for="car in carList">
-      <img
-        :src="car.imgURL"
-        alt="Image of a {{ car.year }} {{ car.brandName }} {{ car.modelName }}"
+      <CarImage
+        :imageURL="car.imgURL"
+        :imageAlt="`Image of a ${car.year} ${car.brandName} ${car.modelName}`"
       />
-      <CarImage :imageURL="car.imgURL" :imageAlt="" />
-      <performanceIndexIcon />
+      <PerformanceIndexIcon />
       <sub class="performance-index-icon"> </sub>
       <h2>{{ car.brandName }}</h2>
       <h2>{{ car.modelName }}</h2>

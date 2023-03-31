@@ -4,6 +4,8 @@ const props = defineProps({
   performanceIndex: Number,
   classColor: String
 })
+
+console.log(props.carClass)
 </script>
 
 <template>
