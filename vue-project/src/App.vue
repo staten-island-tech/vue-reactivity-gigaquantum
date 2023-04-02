@@ -1,34 +1,32 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import { ref } from 'vue'
-import CartButton from './components/CartButton.vue'
+import { /* RouterLink, */ RouterView } from 'vue-router'
+import { ref, computed } from 'vue'
+/* import CartButton from './components/CartButton.vue'
 import PerformanceIndexIcon from './components/PerformanceIndexIcon.vue'
-import CarImage from './components/CarImage.vue'
+import CarImage from './components/CarImage.vue' */
+import CarCard from './components/CarCard.vue'
 
-const carClassInfo = ref({
-  s2: {
+const carClassInfo = ref([
+  {
     className: 'S2',
     maxRating: 998,
     color: 'rgb(21, 103, 214)'
   },
-  s1: { className: 'S1', maxRating: 900, color: 'rgb(189, 94, 228)' },
-  a: { className: 'A', maxRating: 800, color: 'rgb(252, 53, 90)' },
-  b: { className: 'B', maxRating: 700, color: 'rgb(255, 101, 51)' },
-  c: { className: 'C', maxRating: 600, color: 'rgb(246, 191, 49)' },
-  d: { className: 'D', maxRating: 500, color: 'rgb(61, 186, 234)' }
-})
+  { className: 'S1', maxRating: 900, color: 'rgb(189, 94, 228)' },
+  { className: 'A', maxRating: 800, color: 'rgb(252, 53, 90)' },
+  { className: 'B', maxRating: 700, color: 'rgb(255, 101, 51)' },
+  { className: 'C', maxRating: 600, color: 'rgb(246, 191, 49)' },
+  { className: 'D', maxRating: 500, color: 'rgb(61, 186, 234)' }
+])
 
 function getCarClass(performanceIndex) {
-  Object.entries(carClassInfo)
-    .sort((a, b) => {
-      return a - b
-    })
-    .forEach((dataEntry) => {
-      if (dataEntry.maxRating >= performanceIndex) {
-        console.log(dataEntry)
-        return dataEntry
-      }
-    })
+  for (const dataEntry of carClassInfo.value.sort((a, b) => {
+    return a.maxRating - b.maxRating
+  })) {
+    if (dataEntry.maxRating >= performanceIndex) {
+      return dataEntry
+    }
+  }
 }
 
 const carList = ref([
@@ -137,19 +135,27 @@ const carList = ref([
   }
 ])
 
+const filteredCarList = computed(() => {
+  return carList.value.filter((car) => car.inCart === true)
+})
+
 const selectedMsg = ref('IN CART')
 const defaultMsg = ref('ADD TO CART')
 </script>
 
 <template>
-  <div id="card-bin">
-    <div class="car-card" v-for="car in carList">
+  <div id="content-bin">
+    <div class="card-bin" style="height: 100vh">
+      <!-- <div class="car-card" v-for="car in carList" :key="car.performanceIndex">
       <CarImage
         :imageURL="car.imgURL"
         :imageAlt="`Image of a ${car.year} ${car.brandName} ${car.modelName}`"
       />
-      <PerformanceIndexIcon />
-      <sub class="performance-index-icon"> </sub>
+      <PerformanceIndexIcon
+        :carClass="getCarClass(car.performanceIndex).className"
+        :performanceIndex="car.performanceIndex"
+        :classColor="getCarClass(car.performanceIndex).color"
+      />
       <h2>{{ car.brandName }}</h2>
       <h2>{{ car.modelName }}</h2>
       <h2>{{ car.year }}</h2>
@@ -157,13 +163,49 @@ const defaultMsg = ref('ADD TO CART')
         :defaultText="defaultMsg"
         :selectedText="selectedMsg"
         :selectedStatus="car.inCart"
-        :buttonBackgroundColor="[getCarClass(car.performanceIndex)].color"
+        :buttonBackgroundColor="getCarClass(car.performanceIndex).color"
         @click="car.inCart = !car.inCart"
       />
+    </div> -->
+      <CarCard
+        v-for="car in carList"
+        :key="car.performanceIndex"
+        :carYear="car.year"
+        :carBrandName="car.brandName"
+        :carModelName="car.modelName"
+        :carImageURL="car.imgURL"
+        :carImageAlt="`Image of a ${car.year} ${car.brandName} ${car.modelName}`"
+        :carClassName="getCarClass(car.performanceIndex).className"
+        :carPerformanceIndex="car.performanceIndex"
+        :classColor="getCarClass(car.performanceIndex).color"
+        :btnDefaultText="defaultMsg"
+        :btnSelectedText="selectedMsg"
+        :cartSelectedStatus="car.inCart"
+        @response="car.inCart = !car.inCart"
+      />
+    </div>
+    <div id="cart-bin">
+      <div class="card-bin" style="height: 80vh; background-color: grey">
+        <CarCard
+          v-for="car in filteredCarList"
+          :key="car.performanceIndex"
+          :carYear="car.year"
+          :carBrandName="car.brandName"
+          :carModelName="car.modelName"
+          :carImageURL="car.imgURL"
+          :carImageAlt="`Image of a ${car.year} ${car.brandName} ${car.modelName}`"
+          :carClassName="getCarClass(car.performanceIndex).className"
+          :carPerformanceIndex="car.performanceIndex"
+          :classColor="getCarClass(car.performanceIndex).color"
+          :btnDefaultText="defaultMsg"
+          :btnSelectedText="selectedMsg"
+          :cartSelectedStatus="car.inCart"
+          @response="car.inCart = !car.inCart"
+        />
+      </div>
     </div>
   </div>
 
-  <!-- <CarCard /> -->
   <RouterView />
 </template>
 
@@ -177,24 +219,34 @@ h2 {
 }
 
 img {
-  width: 40rem;
-}
-.car-card {
-  border-color: blueviolet;
-  border-style: solid;
-  border-width: 0.25rem;
-  width: fit-content;
-  height: fit-content;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items: center;
-  margin: 2rem;
+  /* width: 40rem; */
 }
 
-#card-bin {
+.card-bin {
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: space-around;
+  overflow: auto;
+  overflow-x: hidden;
+  /* Hide scrollbar for IE, Edge and Firefox */
+  /* -ms-overflow-style: none; */ /* IE and Edge */
+  /* scrollbar-width: none; */ /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.card-bin::-webkit-scrollbar {
+  /* display: none; */
+}
+
+#cart-bin {
+  background-color: black;
+  width: 250rem;
+}
+#content-bin {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
   align-content: space-around;
   justify-content: space-around;
 }

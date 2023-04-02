@@ -8,5 +8,7 @@ html {
   box-sizing: border-box;
   font-size: 62.5%;
   font-family: 'Sofia Sans Condensed', sans-serif;
+}
+body {
   background-color: rgb(201, 201, 201);
 }
