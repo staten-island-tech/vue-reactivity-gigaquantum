@@ -10,9 +10,6 @@ const props = defineProps({
 </template>
 
 <style scoped>
-template {
-}
-
 .img-bin {
   /* border: orange solid 0.25rem; 8 */
   /* overflow: hidden;
