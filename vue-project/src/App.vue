@@ -35,7 +35,7 @@ const carList = ref([
     modelName: '110 X',
     year: 2020,
     creditCost: 80000,
-    imgURL: './assets/img/fh5-carlist-defender-20210831.jpg',
+    imgURL: './public/img/fh5-carlist-defender-20210831.jpg',
     inCart: false,
     performanceIndex: 534
   },
@@ -44,7 +44,7 @@ const carList = ref([
     modelName: 'Sport XJR-15',
     year: 1991,
     creditCost: 500000,
-    imgURL: './assets/img/fh5-carlist-jaguar-20210831.jpg',
+    imgURL: './public/img/fh5-carlist-jaguar-20210831.jpg',
     inCart: false,
     performanceIndex: 828
   },
@@ -53,7 +53,7 @@ const carList = ref([
     modelName: "Ford Escort RS Cosworth WRC 'Cossie V2'",
     year: 1994,
     creditCost: 500000,
-    imgURL: './assets/img/fh5-carlist-hoonigan-20210831.jpg',
+    imgURL: './public/img/fh5-carlist-hoonigan-20210831.jpg',
     inCart: false,
     performanceIndex: 783
   },
@@ -62,7 +62,7 @@ const carList = ref([
     modelName: "#25 'Brocky' Ultra4 Bronco RTR",
     year: 2017,
     creditCost: 500000,
-    imgURL: './assets/img/fh5-newfords-broncortr-20210825.jpg',
+    imgURL: './public/img/fh5-newfords-broncortr-20210825.jpg',
     inCart: false,
     performanceIndex: 748
   },
@@ -71,7 +71,7 @@ const carList = ref([
     modelName: 'Bronco',
     year: 2021,
     creditCost: 55000,
-    imgURL: './assets/img/fh5-newfords-bronco-20210825.jpg',
+    imgURL: './public/img/fh5-newfords-bronco-20210825.jpg',
     inCart: false,
     performanceIndex: 560
   },
@@ -80,7 +80,7 @@ const carList = ref([
     modelName: '#2069 Ford Performance Bronco R',
     year: 2020,
     creditCost: 250000,
-    imgURL: './assets/img/fh5-newfords-broncor-20210825.jpg',
+    imgURL: './public/img/fh5-newfords-broncor-20210825.jpg',
     inCart: false,
     performanceIndex: 544
   },
@@ -89,7 +89,7 @@ const carList = ref([
     modelName: 'Racing Escort MK1',
     year: 1967,
     creditCost: 500000,
-    imgURL: './assets/img/fh5-newfords-escort-20210825.jpg',
+    imgURL: './public/img/fh5-newfords-escort-20210825.jpg',
     inCart: false,
     performanceIndex: 636
   },
@@ -98,7 +98,7 @@ const carList = ref([
     modelName: 'Super Duty F-450 DRW Platinum',
     year: 2020,
     creditCost: 70000,
-    imgURL: './assets/img/fh5-newfords-f450-20210825.jpg',
+    imgURL: './public/img/fh5-newfords-f450-20210825.jpg',
     inCart: false,
     performanceIndex: 466
   },
@@ -107,7 +107,7 @@ const carList = ref([
     modelName: "#65 Rothsport Racing 911 'Desert Flyer'",
     year: 1989,
     creditCost: 500000,
-    imgURL: './assets/img/fh5-carlist-porsche-964desert-20210903-800x450.jpg',
+    imgURL: './public/img/fh5-carlist-porsche-964desert-20210903-800x450.jpg',
     inCart: false,
     performanceIndex: 694
   },
@@ -116,7 +116,7 @@ const carList = ref([
     modelName: 'Macan Rally Raid',
     year: 2018,
     creditCost: 250000,
-    imgURL: './assets/img/fh5-carlist-porsche-macanrr-20210903-800x450.jpg',
+    imgURL: './public/img/fh5-carlist-porsche-macanrr-20210903-800x450.jpg',
     inCart: false,
     performanceIndex: 637
   },
@@ -125,7 +125,7 @@ const carList = ref([
     modelName: 'Taycan Turbo S',
     year: 2020,
     creditCost: 185000,
-    imgURL: './assets/img/fh5-carlist-porsche-taycan-20210903.jpg',
+    imgURL: './public/img/fh5-carlist-porsche-taycan-20210903.jpg',
     inCart: false,
     performanceIndex: 807
   }
