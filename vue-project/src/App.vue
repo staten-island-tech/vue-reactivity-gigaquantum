@@ -35,7 +35,7 @@ const carList = ref([
     modelName: '110 X',
     year: 2020,
     creditCost: 80000,
-    imgURL: 'https://www.gtplanet.net/wp-content/uploads/2021/08/fh5-carlist-defender-20210831.jpg',
+    imgURL: './public/img/fh5-carlist-defender-20210831.jpg',
     inCart: false,
     performanceIndex: 534
   },
@@ -44,7 +44,7 @@ const carList = ref([
     modelName: 'Sport XJR-15',
     year: 1991,
     creditCost: 500000,
-    imgURL: 'https://www.gtplanet.net/wp-content/uploads/2021/08/fh5-carlist-jaguar-20210831.jpg',
+    imgURL: './public/img/fh5-carlist-jaguar-20210831.jpg',
     inCart: false,
     performanceIndex: 828
   },
@@ -53,7 +53,7 @@ const carList = ref([
     modelName: "Ford Escort RS Cosworth WRC 'Cossie V2'",
     year: 1994,
     creditCost: 500000,
-    imgURL: 'https://www.gtplanet.net/wp-content/uploads/2021/08/fh5-carlist-hoonigan-20210831.jpg',
+    imgURL: './public/img/fh5-carlist-hoonigan-20210831.jpg',
     inCart: false,
     performanceIndex: 783
   },
@@ -62,8 +62,7 @@ const carList = ref([
     modelName: "#25 'Brocky' Ultra4 Bronco RTR",
     year: 2017,
     creditCost: 500000,
-    imgURL:
-      'https://www.gtplanet.net/wp-content/uploads/2021/08/fh5-newfords-broncortr-20210825.jpg',
+    imgURL: './public/img/fh5-newfords-broncortr-20210825.jpg',
     inCart: false,
     performanceIndex: 748
   },
@@ -72,7 +71,7 @@ const carList = ref([
     modelName: 'Bronco',
     year: 2021,
     creditCost: 55000,
-    imgURL: 'https://www.gtplanet.net/wp-content/uploads/2021/08/fh5-newfords-bronco-20210825.jpg',
+    imgURL: './public/img/fh5-newfords-bronco-20210825.jpg',
     inCart: false,
     performanceIndex: 560
   },
@@ -80,8 +79,8 @@ const carList = ref([
     brandName: 'Ford',
     modelName: '#2069 Ford Performance Bronco R',
     year: 2020,
-    creditCost: 0,
-    imgURL: 'https://www.gtplanet.net/wp-content/uploads/2021/08/fh5-newfords-broncor-20210825.jpg',
+    creditCost: 250000,
+    imgURL: './public/img/fh5-newfords-broncor-20210825.jpg',
     inCart: false,
     performanceIndex: 544
   },
@@ -90,7 +89,7 @@ const carList = ref([
     modelName: 'Racing Escort MK1',
     year: 1967,
     creditCost: 500000,
-    imgURL: 'https://www.gtplanet.net/wp-content/uploads/2021/08/fh5-newfords-escort-20210825.jpg',
+    imgURL: './public/img/fh5-newfords-escort-20210825.jpg',
     inCart: false,
     performanceIndex: 636
   },
@@ -99,7 +98,7 @@ const carList = ref([
     modelName: 'Super Duty F-450 DRW Platinum',
     year: 2020,
     creditCost: 70000,
-    imgURL: 'https://www.gtplanet.net/wp-content/uploads/2021/08/fh5-newfords-f450-20210825.jpg',
+    imgURL: './public/img/fh5-newfords-f450-20210825.jpg',
     inCart: false,
     performanceIndex: 466
   },
@@ -108,8 +107,7 @@ const carList = ref([
     modelName: "#65 Rothsport Racing 911 'Desert Flyer'",
     year: 1989,
     creditCost: 500000,
-    imgURL:
-      'https://www.gtplanet.net/wp-content/uploads/2021/09/fh5-carlist-porsche-964desert-20210903-800x450.jpg',
+    imgURL: './public/img/fh5-carlist-porsche-964desert-20210903-800x450.jpg',
     inCart: false,
     performanceIndex: 694
   },
@@ -118,8 +116,7 @@ const carList = ref([
     modelName: 'Macan Rally Raid',
     year: 2018,
     creditCost: 250000,
-    imgURL:
-      'https://www.gtplanet.net/wp-content/uploads/2021/09/fh5-carlist-porsche-macanrr-20210903-800x450.jpg',
+    imgURL: './public/img/fh5-carlist-porsche-macanrr-20210903-800x450.jpg',
     inCart: false,
     performanceIndex: 637
   },
@@ -128,8 +125,7 @@ const carList = ref([
     modelName: 'Taycan Turbo S',
     year: 2020,
     creditCost: 185000,
-    imgURL:
-      'https://www.gtplanet.net/wp-content/uploads/2021/09/fh5-carlist-porsche-taycan-20210903.jpg',
+    imgURL: './public/img/fh5-carlist-porsche-taycan-20210903.jpg',
     inCart: false,
     performanceIndex: 807
   }
@@ -139,13 +135,22 @@ const filteredCarList = computed(() => {
   return carList.value.filter((car) => car.inCart === true)
 })
 
+function calcSum(array, property) {
+  let sum = 0
+  array.forEach((entry) => {
+    sum += entry[property]
+  })
+  return sum
+}
+
 const selectedMsg = ref('IN CART')
 const defaultMsg = ref('ADD TO CART')
 </script>
 
 <template>
+  <h1 id="title-banner">FORZA HORIZON 5 CARS</h1>
   <div id="content-bin">
-    <div class="card-bin" style="height: 100vh">
+    <div class="card-bin" style="height: 91vh">
       <!-- <div class="car-card" v-for="car in carList" :key="car.performanceIndex">
       <CarImage
         :imageURL="car.imgURL"
@@ -170,6 +175,7 @@ const defaultMsg = ref('ADD TO CART')
       <CarCard
         v-for="car in carList"
         :key="car.performanceIndex"
+        :carCost="car.creditCost"
         :carYear="car.year"
         :carBrandName="car.brandName"
         :carModelName="car.modelName"
@@ -185,10 +191,11 @@ const defaultMsg = ref('ADD TO CART')
       />
     </div>
     <div id="cart-bin">
-      <div class="card-bin" style="height: 80vh; background-color: grey">
+      <div class="card-bin" style="height: 75vh">
         <CarCard
           v-for="car in filteredCarList"
           :key="car.performanceIndex"
+          :carCost="car.creditCost"
           :carYear="car.year"
           :carBrandName="car.brandName"
           :carModelName="car.modelName"
@@ -203,6 +210,10 @@ const defaultMsg = ref('ADD TO CART')
           @response="car.inCart = !car.inCart"
         />
       </div>
+      <div id="cart-info">
+        <p>Items: {{ filteredCarList.length }}</p>
+        <p>Total Cost: CR {{ calcSum(filteredCarList, 'creditCost') }}</p>
+      </div>
     </div>
   </div>
 
@@ -210,8 +221,15 @@ const defaultMsg = ref('ADD TO CART')
 </template>
 
 <style scoped>
-h1 {
-  font-size: 2rem;
+#title-banner {
+  width: 100vw;
+  height: 9vh;
+  font-size: 7.5vh;
+  background-color: rgb(232, 51, 130);
+  color: white;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
 h2 {
@@ -228,21 +246,41 @@ img {
   align-content: flex-start;
   justify-content: space-around;
   overflow: auto;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
+
   /* Hide scrollbar for IE, Edge and Firefox */
-  /* -ms-overflow-style: none; */ /* IE and Edge */
-  /* scrollbar-width: none; */ /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 .card-bin::-webkit-scrollbar {
-  /* display: none; */
+  display: none;
 }
 
 #cart-bin {
-  background-color: black;
-  width: 250rem;
+  background-color: rgba(100, 100, 100, 0.5);
+  width: 145rem;
+  margin: 2.5rem;
 }
+
+#cart-info {
+  /*border-color: rgba(255, 255, 255, 0.7);
+  border-width: 0.5rem;
+  border-style: solid;*/
+  height: 10vh;
+  width: 50rem;
+  color: rgba(255, 255, 255, 0.7);
+  height: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  font-size: 5rem;
+  font-weight: 600;
+  padding: 2.5rem;
+}
+
 #content-bin {
   display: flex;
   flex-wrap: nowrap;

@@ -5,6 +5,7 @@ import PerformanceIndexIcon from './PerformanceIndexIcon.vue'
 import CarImage from './CarImage.vue'
 
 const props = defineProps({
+  carCost: Number,
   carYear: Number,
   carBrandName: String,
   carModelName: String,
@@ -23,15 +24,25 @@ const props = defineProps({
 
 <template>
   <div class="car-card">
+    <div class="car-name-info">
+      <h2>
+        <span class="model-name">{{ carModelName }}</span>
+        <span class="seperator-space">&nbsp;</span>
+        <span class="car-year">{{ carYear }}</span>
+      </h2>
+      <h3 class="brand-name">{{ carBrandName }}</h3>
+    </div>
     <CarImage :imageURL="carImageURL" :imageAlt="carImageAlt" />
-    <PerformanceIndexIcon
-      :carClass="carClassName"
-      :performanceIndex="carPerformanceIndex"
-      :classColor="classColor"
-    />
-    <h2>{{ carBrandName }}</h2>
-    <h2>{{ carModelName }}</h2>
-    <h2>{{ carYear }}</h2>
+    <div class="car-stat-info">
+      <h3 class="car-cost">CR {{ carCost }}</h3>
+      <PerformanceIndexIcon
+        class="performance-icon"
+        :carClass="carClassName"
+        :performanceIndex="carPerformanceIndex"
+        :classColor="classColor"
+      />
+    </div>
+
     <CartButton
       :defaultText="btnDefaultText"
       :selectedText="btnSelectedText"
@@ -44,8 +55,10 @@ const props = defineProps({
 
 <style scoped>
 h2 {
-  font-size: 3rem;
-  color: white;
+  font-size: 5rem;
+  color: black;
+  margin: 0;
+  padding: 0;
 }
 img {
   /* width: 40rem; */
@@ -62,5 +75,53 @@ img {
   flex-direction: column;
   align-items: center;
   margin: 1rem;
+}
+
+.car-name-info {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: rgb(246, 247, 249);
+  width: 37.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.car-stat-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 37.5rem;
+}
+
+.car-cost {
+  background-color: v-bind(classColor);
+  color: white;
+  border-color: white;
+  border-style: solid;
+  border-width: 0.375rem;
+  font-size: 2.5rem;
+  width: fit-content;
+  height: fit-content;
+  margin: 1rem;
+  padding: 0.25rem;
+  font-weight: 600;
+}
+
+.performance-icon {
+}
+.brand-name {
+  font-size: 2.5rem;
+  font-weight: 350;
+}
+.model-name {
+  font-weight: 750;
+}
+.car-year {
+  font-weight: 350;
+}
+.seperator-space {
+  font-size: 2.5rem;
 }
 </style>

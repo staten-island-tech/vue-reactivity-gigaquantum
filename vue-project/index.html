@@ -5,9 +5,48 @@
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Horizon 5 Cars</title>
+    <style>
+      .background--custom {
+        background-color: #ffffff;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        overflow: hidden;
+        z-index: -2;
+        top: 0;
+        left: 0;
+      }
+      canvas#canvas {
+        z-index: -1;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transform: rotate(0deg) scale(2) translateY(0%);
+        --gradient-color-1: #e77052;
+        --gradient-color-2: #f01b91;
+        --gradient-color-3: #7038ff;
+        --gradient-color-4: #ffba27;
+        --gradient-speed: 0.000006;
+      }
+    </style>
   </head>
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
+    <div class="background--custom">
+      <canvas id="canvas" />
+    </div>
+    <script src="https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.js"></script>
+    <script>
+      var gradient = new Gradient()
+      gradient.initGradient('#canvas')
+    </script>
   </body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body></body>
 </html>

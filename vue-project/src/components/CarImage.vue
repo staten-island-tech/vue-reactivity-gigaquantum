@@ -15,10 +15,10 @@ template {
 
 .img-bin {
   /* border: orange solid 0.25rem; 8 */
-  overflow: hidden;
+  /* overflow: hidden;
   padding: 0rem;
   width: 74%;
-  height: 80%;
+  height: 80%; */
 }
 
 img {
@@ -36,6 +36,6 @@ img {
   right: 0;
   top: 0;
   transform: translateX(26%); */
-  width: 50rem;
+  width: 37.5rem;
 }
 </style>

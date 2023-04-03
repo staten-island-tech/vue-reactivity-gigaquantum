@@ -4,8 +4,6 @@ const props = defineProps({
   performanceIndex: Number,
   classColor: String
 })
-
-console.log(props.classColor)
 </script>
 
 <template>
@@ -22,18 +20,19 @@ console.log(props.classColor)
   flex-wrap: nowrap;
   border-color: white;
   border-style: solid;
-  border-width: 0.5rem;
+  border-width: 0.375rem;
   background-color: v-bind(classColor);
+  margin: 1rem;
 }
 
 p {
-  font-size: 3.5rem;
+  font-size: 2.75rem;
 }
 
 .class-text {
   background-color: v-bind(classColor);
-  width: 4.5rem;
-  height: 4.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
   color: white;
   display: flex;
   align-items: center;
@@ -47,7 +46,7 @@ p {
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  width: 7rem;
-  height: 4.5rem;
+  width: 5.5rem;
+  height: 3.5rem;
 }
 </style>
