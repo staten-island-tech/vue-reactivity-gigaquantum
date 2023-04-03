@@ -85,6 +85,7 @@ img {
   width: 37.5rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+  line-height: 3rem;
 }
 
 .car-stat-info {
