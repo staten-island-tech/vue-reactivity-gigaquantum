@@ -8,3 +8,7 @@ The design includes a list of cars on the left side, and a reactive cart that au
 To accomplish this, I used several key features of the Vue.js framework. I opted to use the Vue 3 Composition API. I used Components to make various parts of the car item cards and the car item cards themselves, and passed props into the car item cards using v-for. I used v-bind along with custom functions to dynamically change the background color of the performance rating icon based on the car’s performance rating value. I used v-if to change the cart button’s text and appearance when a car was added or removed from the cart. I used emits to change whether a car’s inCart property was true or false, made a computed list of all of the cars whose inCart property was true, and used v-for to populate the cart section with cars that were in the cart.
 
 Lastly, I used Vite.js to set up my development environment for this project, and used Netlify to host it online.
+
+## NOTE
+This website was developed for desktop devices only, and may not function as intended on mobile devices.
+This website can be viewed [here](https://horizon5cars.netlify.app)
