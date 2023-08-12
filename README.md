@@ -9,6 +9,6 @@ To accomplish this, I used several key features of the Vue.js framework. I opted
 
 Lastly, I used Vite.js to set up my development environment for this project, and used Netlify to host it online.
 
-## NOTE
-- This website was developed for desktop devices only, and may not function as intended on mobile devices.
+## Other
+- NOTE: This website was developed for desktop devices only, and may not function as intended on mobile devices.
 - This website can be viewed [here](https://horizon5cars.netlify.app)
