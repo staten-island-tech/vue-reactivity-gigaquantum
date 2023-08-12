@@ -1,5 +1,5 @@
 # Reactive Vue.js Car Shopping Website
-This is a project I used to help me learn Vue 3 that was inspired by Forza Horizon 5. 
+This is a project I used to help me learn Vue 3 that is inspired by Forza Horizon 5. 
 
 ## Features
 The design includes a list of cars on the left side, and a reactive cart that automatically updates its item count and total price when items are added or removed from the cart. The design also features an animated background that fits the aesthetic of the site, a custom font from Google Fonts, and a static header that sits above the car item cards. 
